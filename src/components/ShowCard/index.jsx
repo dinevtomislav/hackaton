@@ -6,6 +6,9 @@ export default function ShowCard({ show }) {
     return <div>No image available</div>;
   }
 
+  const heightInCentimeters = show.height * 10;
+  const weightInKilograms = show.weight / 10;
+
   return (
     <div className="show-card">
       <div>
@@ -16,6 +19,12 @@ export default function ShowCard({ show }) {
         <em>Base Experience: {show.base_experience}</em>
         <div>
           Types: {show.types.map((type) => type.type.name).join(', ')}
+        </div>
+        <div>
+        Height: {heightInCentimeters} centimeters | Weight: {weightInKilograms} kilograms
+        </div>
+        <div>
+          Abilities: {show.abilities.map((ability) => ability.ability.name).join(', ')}
         </div>
       </div>
     </div>
