@@ -1,6 +1,6 @@
-# React End to End project
+# Pokemen Search Project
 
-This is a search application for pokemon where you can search and look at all the different kind of pokemon.  
+This is an interactive search application for pokemon where you can search and look at all the different kind of pokemon.  
 
 ## Using this repo
 
