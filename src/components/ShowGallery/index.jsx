@@ -8,7 +8,7 @@ export default function ShowGallery() {
   useEffect(() => {
     async function displayShows() {
       try {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=222");
         const data = await response.json();
         const showData = data.results;
         setShows(showData);
@@ -16,14 +16,14 @@ export default function ShowGallery() {
         console.error('Error fetching Pokémon:', error);
       }
     }
-
+    
     displayShows();
   }, []);
 
   return (
     <div className='shows'>
-      {shows.map((pokemon, index) => (
-        <Link to={`/pokemon/${index + 1}`} key={pokemon.name}>
+      {shows.map((pokemon) => (
+        <Link to={`/shows/${pokemon.name}`} key={pokemon.name}>
           <GalleryImage data={pokemon} />
         </Link>
       ))}

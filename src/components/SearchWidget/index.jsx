@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { SearchForm, ShowList } from '../';
 
-export default function SearchWidget() {
+const SearchWidget = () => {
   const [showData, setShowData] = useState([]);
-  const [searchString, setSearchString] = useState("");
+  const [searchString, setSearchString] = useState('');
 
   useEffect(() => {
     async function searchAPI() {
       try {
-        if (searchString.trim() !== "" && searchString.trim().length >= 2) {
-          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchString}`);
-          if (response.ok) {
-            const data = await response.json();
-            setShowData([data]);
-          } else {
-            setShowData([]);
-          }
-        } else if (searchString.trim().length === 1) {
-          setShowData([{ name: "Search not supported for single letter" }]);
+        if (searchString.trim() !== "" && searchString.trim().length >= 1) {
+          const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1015');
+          const data = await response.json();
+          const results = data.results;
+          const filteredResults = results.filter((result) =>
+            result.name.includes(searchString.toLowerCase())
+          );
+
+          const pokemonData = await Promise.all(filteredResults.map(async (result) => {
+            const res = await fetch(result.url);
+            return res.json();
+          }));
+
+          setShowData(pokemonData);
         } else {
           setShowData([]);
         }
@@ -40,4 +44,6 @@ export default function SearchWidget() {
       <ShowList showData={showData} />
     </>
   );
-}
+};
+
+export default SearchWidget;
