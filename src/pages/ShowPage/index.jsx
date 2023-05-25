@@ -4,12 +4,12 @@ import { ShowCard } from '../../components';
 
 export default function ShowPage() {
   const {id} = useParams();
-  const [show, setShow] = useState({image: {}, rating: {}})
+  const [show, setShow] = useState({url: {}, name: {}})
 
   useEffect(() => {
 
     async function displayShow() {
-      const response = await fetch(`https://api.tvmaze.com/shows/${id}`);
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
       const rawData = await response.json();
       setShow(rawData)
     }

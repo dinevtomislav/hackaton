@@ -8,11 +8,11 @@ const linkStyle = {
 export default function HomePage() {
     return (
         <>
-            <h1>Top TV</h1>
-            <em>All about the smaller silver screen</em>
+            <h1>Top Pokemon</h1>
+            <em>All about the greatest of them all</em>
             <ul>
-                <li><Link to="/shows" style={linkStyle}>Explore shows</Link></li>
-                <li><Link to="/search" style={linkStyle}>Search for your favorite show</Link></li>
+                <li><Link to="/shows" style={linkStyle}>Explore Pokemon</Link></li>
+                <li><Link to="/search" style={linkStyle}>Search for your favorite Pokemon</Link></li>
             </ul>
         </>
     )
