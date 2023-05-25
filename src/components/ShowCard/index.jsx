@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ShowCard({ show }) {
   if (!show || !show.sprites || !show.sprites.front_default) {
-    // If the show or the required properties are missing, render a placeholder or an error message
+    
     return <div>No image available</div>;
   }
 
